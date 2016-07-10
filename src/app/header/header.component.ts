@@ -73,18 +73,26 @@ import { ROUTER_DIRECTIVES } from '@angular/router';
             list-style: none;
             display: flex;
             flex-direction: row;
-            justify-content: center;
+            justify-content: space-around;
+            padding: 0;
+            align-items: stretch;
+            margin: 0;
         }
 
         .menu-item {
             display: inline-block;
-            padding: 1vmin 2vmin;
+            padding: 1.5em;
             flex-grow: 1;
             text-align: center;
+            color: #2d2d72;
         }
         a {
             text-decoration: none;
-            color: #2d2d72;
+            color: inherit;
+        }
+        .menu-item:hover{
+            background-color: #2d2d72;
+            color: #eceff1;
         }
     `],
     directives: [ROUTER_DIRECTIVES]

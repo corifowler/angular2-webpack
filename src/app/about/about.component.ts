@@ -25,7 +25,7 @@ import { Component } from '@angular/core';
             justify-content: center;
         }
         .about-content {
-            background-color: #fbfbfc;
+            background-color: #ECEFF1;
             padding: 1.25em;
             margin: 1em;
             display: flex;
