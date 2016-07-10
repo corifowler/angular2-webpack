@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 
 @Component({
-    selector: 'about-page',
+    selector: 'events-page',
     template: ``,
     styles: [``]
 })
-export class AboutComponent {}
+export class EventsComponent {}

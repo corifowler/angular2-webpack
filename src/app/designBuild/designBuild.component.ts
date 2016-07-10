@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 
 @Component({
-    selector: 'about-page',
+    selector: 'design-build',
     template: ``,
     styles: [``]
 })
-export class AboutComponent {}
+export class DesignBuildComponent {}

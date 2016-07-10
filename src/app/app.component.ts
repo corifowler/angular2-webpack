@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { ROUTER_DIRECTIVES } from '@angular/router';
 
-import { ApiService } from './shared';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
 
 import '../style/app.scss';
 
@@ -11,14 +12,16 @@ import '../style/app.scss';
  */
 @Component({
   selector: 'my-app', // <my-app></my-app>
-  providers: [ApiService],
-  directives: [...ROUTER_DIRECTIVES],
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+  directives: [ROUTER_DIRECTIVES, HeaderComponent, FooterComponent],
+  template: `
+      <header-bar></header-bar>
+      <router-outlet></router-outlet>
+      <footer-bar></footer-bar>
+  `,
+  styles: [``],
 })
 export class AppComponent {
-  url = 'https://github.com/preboot/angular2-webpack';
 
-  constructor(private api: ApiService) {
+  constructor() {
   }
 }

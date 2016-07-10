@@ -1,8 +1,14 @@
 // styles in src/style directory are applied to the whole page
+
+@font-face {
+    font-family: 'Albertus Medium';
+    src: 
+        local('Albertus Medium'),
+        url('/src/assets/fonts/Albertus Medium Regular.woff') format('woff');
+}
+
 body {
-    background: #0147A7;
-    color: #fff;
+    font-family: "Albertus Medium", sans-serif;
+    margin: 0;
 }
-a {
-    color: #03A9F4;
-}
+
