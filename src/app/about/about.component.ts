@@ -71,6 +71,8 @@ import { NavStateActions } from '../actionCreators/navState.actions';
     `]
 })
 export class AboutComponent {
+    private navState;
+
     private bios = [
         {
             name: 'John Smith',
@@ -84,7 +86,12 @@ export class AboutComponent {
         }
     ];
 
-    constructor(private _store: Store<any>) {
+    constructor(private _store: Store<any>, private _navActions: NavStateActions) {
+        this._store.select('navState')
+            .subscribe((navState) => {
+                this.navState = navState;
+            });
 
+        this._navActions.updateState({ 'topNav.activeSection': '' });
     }
 }
