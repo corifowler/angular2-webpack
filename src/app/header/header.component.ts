@@ -17,11 +17,11 @@ import { ROUTER_DIRECTIVES } from '@angular/router';
       </div>
       <div class="top-menu">
         <ul class="top-nav">
-          <li class="menu-item"><a [routerLink]="['/hvac-service']">HVAC Service</a></li>
-          <li class="menu-item"><a [routerLink]="['/building-automation']">Building Automation</a></li>
-          <li class="menu-item"><a [routerLink]="['/design-build']">Design Build</a></li>
-          <li class="menu-item"><a [routerLink]="['/facilities-management']">Facilities Management</a></li>
-          <li class="menu-item"><a [routerLink]="['energy-efficiency']">Energy Efficiency</a></li>
+          <a [routerLink]="['/hvac-service']" class="menu-item"><li>HVAC Service</li></a>
+          <a [routerLink]="['/building-automation']" class="menu-item"><li>Building Automation</li></a>
+          <a [routerLink]="['/design-build']" class="menu-item"><li>Design Build</li></a>
+          <a [routerLink]="['/facilities-management']" class="menu-item"><li>Facilities Management</li></a>
+          <a [routerLink]="['energy-efficiency']" class="menu-item"><li>Energy Efficiency</li></a>
         </ul>
       </div>
     `,
