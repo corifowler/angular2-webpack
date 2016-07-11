@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs/Rx';
+import { NavStateActions } from '../actionCreators/navState.actions';
 
 @Component({
     selector: 'about-page',
@@ -70,8 +73,8 @@ import { Component } from '@angular/core';
 export class AboutComponent {
     private bios = [
         {
-            name: 'John Smith', 
-            title: 'Specialist', 
+            name: 'John Smith',
+            title: 'Specialist',
             about: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod quisquam, itaque at minima possimus quis perspiciatis debitis temporibus vero autem accusantium atque distinctio earum explicabo? Alias expedita temporibus pariatur similique!'
         },
         {
@@ -79,5 +82,9 @@ export class AboutComponent {
             title: 'Specialist',
             about: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa praesentium molestias, ut quod neque optio. Corporis nam impedit nesciunt distinctio quos, culpa nisi minima, laborum. Rem consequatur quam, rerum quibusdam.'
         }
-    ]
+    ];
+
+    constructor(private _store: Store<any>) {
+
+    }
 }
