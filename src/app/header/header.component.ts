@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { ROUTER_DIRECTIVES } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs/Rx';
+import { NavStateActions } from '../actionCreators/navState.actions';
 
 @Component({
     selector: 'header-bar',
@@ -12,16 +15,33 @@ import { ROUTER_DIRECTIVES } from '@angular/router';
             <span> | </span>
             <span>Matthews, NC 28106</span>
           </div>
-          <a [routerLink]="['/']"><img src="/images/top-logo.png" class="top-logo"></a>
+          <a [routerLink]="['/']"><img src="/images/top-logo.png" 
+             (click)="selectPage('')"
+             class="top-logo"></a>
           <img src="/images/Charlotte-Night-Skyline.jpg" class="top-image">
       </div>
       <div class="top-menu">
         <ul class="top-nav">
-          <a [routerLink]="['/hvac-service']" class="menu-item"><li>HVAC Service</li></a>
-          <a [routerLink]="['/building-automation']" class="menu-item"><li>Building Automation</li></a>
-          <a [routerLink]="['/design-build']" class="menu-item"><li>Design Build</li></a>
-          <a [routerLink]="['/facilities-management']" class="menu-item"><li>Facilities Management</li></a>
-          <a [routerLink]="['energy-efficiency']" class="menu-item"><li>Energy Efficiency</li></a>
+          <a [routerLink]="['/hvac-service']"
+             (click)="selectPage('HVAC Service')"
+             [class.selected]="selectedPage === 'HVAC Service'"
+             class="menu-item"><li>HVAC Service</li></a>
+          <a [routerLink]="['/building-automation']" 
+             (click)="selectPage('Building Automation')"
+             [class.selected]="selectedPage === 'Building Automation'"
+             class="menu-item"><li>Building Automation</li></a>
+          <a [routerLink]="['/design-build']"
+             (click)="selectPage('Design Build')"
+             [class.selected]="selectedPage === 'Design Build'"
+             class="menu-item"><li>Design Build</li></a>
+          <a [routerLink]="['/facilities-management']"
+             (click)="selectPage('Facilities Management')"
+             [class.selected]="selectedPage === 'Facilities Management'"
+             class="menu-item"><li>Facilities Management</li></a>
+          <a [routerLink]="['energy-efficiency']"
+             (click)="selectPage('Energy Efficiency')"
+             [class.selected]="selectedPage === 'Energy Efficiency'"
+             class="menu-item"><li>Energy Efficiency</li></a>
         </ul>
       </div>
     `,
@@ -94,7 +114,26 @@ import { ROUTER_DIRECTIVES } from '@angular/router';
             background-color: #2d2d72;
             color: #eceff1;
         }
+        .selected {
+            background-color: #2d2d72;
+            color: #eceff1;
+        }
     `],
     directives: [ROUTER_DIRECTIVES]
 })
-export class HeaderComponent {}
+export class HeaderComponent {
+    private navState;
+    private selectedPage;
+
+    constructor(private _store: Store<any>, private _navActions: NavStateActions) {
+        this._store.select('navState')
+            .subscribe((navState) => {
+                this.navState = navState;
+                this.selectedPage = this.navState['topNav.activeSection'];
+            });
+    }
+
+    private selectPage(page: string) {
+        this._navActions.updateState({ 'topNav.activeSection': page });
+    }
+}

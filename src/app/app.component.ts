@@ -4,6 +4,8 @@ import { ROUTER_DIRECTIVES } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 
+import { NavStateActions } from './actionCreators/navState.actions';
+
 import '../style/app.scss';
 
 /*
@@ -19,9 +21,10 @@ import '../style/app.scss';
       <footer-bar></footer-bar>
   `,
   styles: [``],
+  providers: [NavStateActions]
 })
 export class AppComponent {
 
-  constructor() {
+  constructor(private _navActions: NavStateActions) {
   }
 }

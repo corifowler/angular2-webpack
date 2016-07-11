@@ -6,7 +6,7 @@ import { ROUTER_DIRECTIVES } from '@angular/router';
     template: `
         <div class="bottom-menu">
             <div class="left-bottom">
-                <h3>MEET THE TEAM</h3>
+                <h3><a [routerLink]="['/about']">MEET THE TEAM</a></h3>
                 <ul>
                     <li><a [routerLink]="['/about']">About Us</a></li>
                 </ul>
