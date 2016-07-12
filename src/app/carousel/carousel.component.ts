@@ -4,14 +4,20 @@ import { Component, OnInit } from '@angular/core';
     selector: 'home-carousel',
     template: `
         <div class="parent-container">
-            <button class="left"><i class="fa fa-chevron-left"></i></button>
+            <button class="left"
+                    (click)="previousPicture()">
+                <i class="fa fa-chevron-left"></i>
+            </button>
             <ul class="carousel-container">
                 <li *ngFor="let image of images, let i=index"
                     [class.hidden]="selectedImage !== i">
                     <img [src]="image">
                 </li>
             </ul>
-            <button class="right"><i class="fa fa-chevron-right"></i></button>
+            <button class="right"
+                    (click)="nextPicture()">
+                <i class="fa fa-chevron-right"></i>
+            </button>
         </div>
     `,
     styles: [`
@@ -30,20 +36,22 @@ import { Component, OnInit } from '@angular/core';
         }
         img {
             max-width: 90%;
+            opacity: 0.9;
+            max-height: 90%;
         }
         .hidden {
             display: none;
         }
         .fa {
-            font-size: 3em;
+            font-size: 2.5em;
             position: absolute;
             z-index: 5;
         }
         .fa-chevron-left {
-            left: 4em;
+            left: 3em;
         }
         .fa-chevron-right {
-            right: 4em;
+            right: 3em;
         }
         .left, .right {
             position: relative;
@@ -51,6 +59,7 @@ import { Component, OnInit } from '@angular/core';
         button {
             background: none;
             border: none;
+            outline: none;
         }
     `]
 })
@@ -71,6 +80,22 @@ export class CarouselComponent implements OnInit {
 
     private changeImages() {
 
+    }
+
+    private previousPicture() {
+        let total = this.images.length - 1;
+        if (this.selectedImage !== 0) {
+            this.selectedImage = this.selectedImage -1;
+        } 
+    }
+
+    private nextPicture() {
+        let total = this.images.length - 1;
+        if (this.selectedImage <= total && this.selectedImage !== total) {
+            this.selectedImage = this.selectedImage + 1;
+        } else {
+            this.selectedImage = 0;
+        }
     }
 
 }
