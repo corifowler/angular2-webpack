@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 
 @Component({
     selector: 'home-carousel',
@@ -13,7 +13,7 @@ import { Component, OnInit } from '@angular/core';
                     [class.hidden]="selectedImage !== i">
                     <img [src]="image.image">
                     <div class="text-box">
-                        <h3>{{image.title}}</h3>
+                        <h2>{{image.title}}</h2>
                         <span>
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere possimus doloremque reprehenderit asperiores excepturi repellat sapiente. Dolores deleniti, explicabo alias ullam at, quae expedita nulla placeat dolore in quo. Nam.
                         </span>
@@ -35,6 +35,11 @@ import { Component, OnInit } from '@angular/core';
         .carousel-container {
             padding-left: 0;
             position: relative;
+        }
+        ul {
+            overflow: hidden;
+            width: 100%;
+            height: 30em;
         }
         li {
             list-style: none;
@@ -84,24 +89,34 @@ import { Component, OnInit } from '@angular/core';
     `]
 })
 export class CarouselComponent implements OnInit {
-    public images: Array<any> = [
-        {
-            title: 'Design Build',
-            image: '/images/new_construction.jpg'
-        },
-        {
-            title: '',
-            image: '/images/Charlotte-Night-Skyline.jpg'
-        }
-    ];
+    public images: Array<any>;
+
     public selectedImage: number = 0;
 
-    public ngOnInit() {
-        this.carouselTimer();
+    constructor() {
+        this.images = [
+            {
+                title: 'Design Build',
+                image: '/images/new_construction.jpg'
+            },
+            {
+                title: '',
+                image: '/images/Charlotte-Night-Skyline.jpg'
+            }
+        ];
+
+        this.selectedImage = 0;
+
+        setInterval(() => {this.nextPicture();}, 5000);
     }
 
+    public ngOnInit() {
+        this.selectedImage = 0;
+    }
+
+
     private carouselTimer() {
-        // setInterval(this.changeImages, 5000);
+        setInterval(this.nextPicture, 3000);
     }
 
     private changeImages() {
@@ -116,7 +131,17 @@ export class CarouselComponent implements OnInit {
     }
 
     private nextPicture() {
-        let total = this.images.length - 1;
+        let images = [
+            {
+                title: 'Design Build',
+                image: '/images/new_construction.jpg'
+            },
+            {
+                title: '',
+                image: '/images/Charlotte-Night-Skyline.jpg'
+            }
+        ];
+        let total = images.length - 1;
         if (this.selectedImage <= total && this.selectedImage !== total) {
             this.selectedImage = this.selectedImage + 1;
         } else {
