@@ -11,7 +11,13 @@ import { Component, OnInit } from '@angular/core';
             <ul class="carousel-container">
                 <li *ngFor="let image of images, let i=index"
                     [class.hidden]="selectedImage !== i">
-                    <img [src]="image">
+                    <img [src]="image.image">
+                    <div class="text-box">
+                        <h3>{{image.title}}</h3>
+                        <span>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere possimus doloremque reprehenderit asperiores excepturi repellat sapiente. Dolores deleniti, explicabo alias ullam at, quae expedita nulla placeat dolore in quo. Nam.
+                        </span>
+                    </div>
                 </li>
             </ul>
             <button class="right"
@@ -35,7 +41,7 @@ import { Component, OnInit } from '@angular/core';
             text-align: center;
         }
         img {
-            max-width: 90%;
+            max-width: 98%;
             opacity: 0.9;
             max-height: 90%;
         }
@@ -48,10 +54,10 @@ import { Component, OnInit } from '@angular/core';
             z-index: 5;
         }
         .fa-chevron-left {
-            left: 3em;
+            left: 1em;
         }
         .fa-chevron-right {
-            right: 3em;
+            right: 1em;
         }
         .left, .right {
             position: relative;
@@ -61,12 +67,32 @@ import { Component, OnInit } from '@angular/core';
             border: none;
             outline: none;
         }
+        .text-box {
+            position: absolute;
+            background-color: #434343;
+            color: #eceff1;
+            padding: 1em;
+            top: 2em;
+            left: 5em;
+            width: 35%;
+            opacity: 0.85;
+            text-align: left;
+        }
+        .text-box span {
+            font-family: 'Roboto', sans-serif;
+        }
     `]
 })
 export class CarouselComponent implements OnInit {
-    public images: Array<string> = [
-        '/images/new_construction.jpg',
-        '/images/Charlotte-Night-Skyline.jpg'
+    public images: Array<any> = [
+        {
+            title: 'Design Build',
+            image: '/images/new_construction.jpg'
+        },
+        {
+            title: '',
+            image: '/images/Charlotte-Night-Skyline.jpg'
+        }
     ];
     public selectedImage: number = 0;
 
