@@ -10,7 +10,7 @@ import { ROUTER_DIRECTIVES } from '@angular/router';
                 <ul>
                     <li><a [routerLink]="['/about']">About Us</a></li>
                 </ul>
-                <h3>CAREERS</h3>
+                <h3><a [routerLink]="['/careers']">CAREERS</a></h3>
                 <ul>
                     <li><a [routerLink]="['/service-careers']">Service/Controls</a></li>
                     <li><a [routerLink]="['/office-careers']">Office</a></li>

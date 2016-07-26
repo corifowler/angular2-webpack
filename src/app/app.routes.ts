@@ -12,6 +12,8 @@ import { BlogComponent } from './blog/blog.component';
 import { EventsComponent } from './events/events.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { ContactComponent } from './contact/contact.component';
+import { CareersComponent } from './careers/careers.component';
+import { OfficeCareersComponent } from './officeCareers/officeCareers.component';
 
 export const routes: RouterConfig = [
   { path: '', component: HomeComponent },
@@ -22,10 +24,12 @@ export const routes: RouterConfig = [
   { path: 'energy-efficiency', component: EnergyEfficiencyComponent },
   { path: 'about', component: AboutComponent },
   { path: 'service-careers', component: ServiceCareersComponent },
+  { path: 'office-careers', component: OfficeCareersComponent },
   { path: 'blog', component: BlogComponent },
   { path: 'events', component: EventsComponent },
   { path: 'projects', component: ProjectsComponent },
-  { path: 'contact-us', component: ContactComponent }
+  { path: 'contact-us', component: ContactComponent },
+  { path: 'careers', component: CareersComponent }
 ];
 
 export const APP_ROUTER_PROVIDERS = [

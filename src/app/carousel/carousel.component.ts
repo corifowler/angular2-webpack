@@ -1,29 +1,26 @@
 import { Component, OnInit, OnChanges } from '@angular/core';
+import { ROUTER_DIRECTIVES } from '@angular/router';
 
 @Component({
     selector: 'home-carousel',
     template: `
         <div class="parent-container">
-            <button class="left"
-                    (click)="previousPicture()">
-                <i class="fa fa-chevron-left"></i>
-            </button>
             <ul class="carousel-container">
                 <li *ngFor="let image of images, let i=index"
                     [class.hidden]="selectedImage !== i">
                     <img [src]="image.image">
                     <div class="text-box">
-                        <h2>{{image.title}}</h2>
+                        <h2>
+                            <a [routerLink]="[image.route]">
+                                {{image.title}}
+                            </a>
+                        </h2>
                         <span>
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere possimus doloremque reprehenderit asperiores excepturi repellat sapiente. Dolores deleniti, explicabo alias ullam at, quae expedita nulla placeat dolore in quo. Nam.
                         </span>
                     </div>
                 </li>
             </ul>
-            <button class="right"
-                    (click)="nextPicture()">
-                <i class="fa fa-chevron-right"></i>
-            </button>
         </div>
     `,
     styles: [`
@@ -31,6 +28,7 @@ import { Component, OnInit, OnChanges } from '@angular/core';
             display: flex;
             flex-direction: row;
             align-items: center;
+            justify-content: center;
         }
         .carousel-container {
             padding-left: 0;
@@ -86,7 +84,12 @@ import { Component, OnInit, OnChanges } from '@angular/core';
         .text-box span {
             font-family: 'Roboto', sans-serif;
         }
-    `]
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+    `],
+    directives: [ROUTER_DIRECTIVES]
 })
 export class CarouselComponent implements OnInit {
     public images: Array<any>;
@@ -97,17 +100,19 @@ export class CarouselComponent implements OnInit {
         this.images = [
             {
                 title: 'Design Build',
-                image: '/images/new_construction.jpg'
+                image: '/images/new_construction.jpg',
+                route: '/design-build'
             },
             {
                 title: '',
-                image: '/images/Charlotte-Night-Skyline.jpg'
+                image: '/images/Charlotte-Night-Skyline.jpg',
+                route: ''
             }
         ];
 
         this.selectedImage = 0;
-
         setInterval(() => {this.nextPicture();}, 5000);
+
     }
 
     public ngOnInit() {
