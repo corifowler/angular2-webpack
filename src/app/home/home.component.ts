@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { CarouselComponent } from '../carousel/carousel.component';
+import { CarComponent } from '../carousel/carousel.component';
 
 @Component({
     selector: 'my-home',
@@ -16,7 +16,7 @@ import { CarouselComponent } from '../carousel/carousel.component';
             position: relative;
         }
     `],
-    directives: [CarouselComponent]
+    directives: [CarComponent]
 })
 export class HomeComponent implements OnInit {
 

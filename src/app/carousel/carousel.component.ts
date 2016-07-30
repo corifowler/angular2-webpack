@@ -1,26 +1,25 @@
 import { Component, OnInit, OnChanges } from '@angular/core';
 import { ROUTER_DIRECTIVES } from '@angular/router';
+import { CAROUSEL_DIRECTIVES, SlideComponent, CarouselComponent } from 'ng2-bootstrap/ng2-bootstrap';
+import { CORE_DIRECTIVES } from '@angular/common';
 
 @Component({
     selector: 'home-carousel',
     template: `
-        <div class="parent-container">
-            <ul class="carousel-container">
-                <li *ngFor="let image of images, let i=index"
-                    [class.hidden]="selectedImage !== i">
-                    <img [src]="image.image">
-                    <div class="text-box">
-                        <h2>
-                            <a [routerLink]="[image.route]">
-                                {{image.title}}
-                            </a>
-                        </h2>
-                        <span>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere possimus doloremque reprehenderit asperiores excepturi repellat sapiente. Dolores deleniti, explicabo alias ullam at, quae expedita nulla placeat dolore in quo. Nam.
-                        </span>
-                    </div>
-                </li>
-            </ul>
+        <div class="row">
+            <div class="col-md-6">
+                <carousel [interval]="myInterval" [noWrap]="noWrapSlides">
+                    <slide *ngFor="let slidez of slides; let index=index"
+                     [active]="slidez.active">
+                        <img [src]="slidez.image" style="margin:auto;">
+
+                        <div class="text-box">
+                            <span>{{slidez.text}}</span>
+                            <p>{{slidez.summary}}</p>
+                        </div>
+                    </slide>
+                </carousel>
+            </div>
         </div>
     `,
     styles: [`
@@ -46,112 +45,77 @@ import { ROUTER_DIRECTIVES } from '@angular/router';
         img {
             max-width: 98%;
             opacity: 0.9;
-            max-height: 90%;
+            max-height: 85%;
         }
         .hidden {
             display: none;
-        }
-        .fa {
-            font-size: 2.5em;
-            position: absolute;
-            z-index: 5;
-        }
-        .fa-chevron-left {
-            left: 1em;
-        }
-        .fa-chevron-right {
-            right: 1em;
-        }
-        .left, .right {
-            position: relative;
-        }
-        button {
-            background: none;
-            border: none;
-            outline: none;
         }
         .text-box {
             position: absolute;
             background-color: #434343;
             color: #eceff1;
             padding: 1em;
-            top: 2em;
-            left: 5em;
+            top: 2.5em;
+            left: 8em;
             width: 35%;
             opacity: 0.85;
             text-align: left;
         }
         .text-box span {
+            font-size: 1.5em;
+            color: #ECEFF1;
+            font-weight: bold;
+            padding: 0.5em;
+        }
+        .text-box p {
             font-family: 'Roboto', sans-serif;
+            padding: 0.5em;
         }
         a {
             text-decoration: none;
             color: inherit;
         }
+        .carousel .slide {
+            width: 100vw !important;
+        }
+        .col-md-6 {
+            width: 100vw;
+            margin: 1em;
+        }
     `],
-    directives: [ROUTER_DIRECTIVES]
+    directives: [ROUTER_DIRECTIVES, CAROUSEL_DIRECTIVES, CORE_DIRECTIVES, SlideComponent, CarouselComponent]
 })
-export class CarouselComponent implements OnInit {
-    public images: Array<any>;
-
-    public selectedImage: number = 0;
+export class CarComponent implements OnInit {
+    private myInterval:number = 5000;
+    private noWrapSlides:boolean = false;
+    private slides:Array<any> = [];
 
     constructor() {
-        this.images = [
-            {
-                title: 'Design Build',
-                image: '/images/new_construction.jpg',
-                route: '/design-build'
-            },
-            {
-                title: '',
-                image: '/images/Charlotte-Night-Skyline.jpg',
-                route: ''
-            }
-        ];
-
-        this.selectedImage = 0;
-        setInterval(() => {this.nextPicture();}, 5000);
-
-    }
-
-    public ngOnInit() {
-        this.selectedImage = 0;
-    }
-
-
-    private carouselTimer() {
-        setInterval(this.nextPicture, 3000);
-    }
-
-    private changeImages() {
-
-    }
-
-    private previousPicture() {
-        let total = this.images.length - 1;
-        if (this.selectedImage !== 0) {
-            this.selectedImage = this.selectedImage -1;
-        } 
-    }
-
-    private nextPicture() {
-        let images = [
-            {
-                title: 'Design Build',
-                image: '/images/new_construction.jpg'
-            },
-            {
-                title: '',
-                image: '/images/Charlotte-Night-Skyline.jpg'
-            }
-        ];
-        let total = images.length - 1;
-        if (this.selectedImage <= total && this.selectedImage !== total) {
-            this.selectedImage = this.selectedImage + 1;
-        } else {
-            this.selectedImage = 0;
+        for (let i = 0; i < 4; i++) {
+        this.addSlide();
         }
     }
+    
+    public ngOnInit() {}
+
+    private addSlide() {
+        let newWidth = 600 + this.slides.length + 1;
+        this.slides.push({
+            text: 'Design Build',
+            image: '/images/new_construction.jpg',
+            route: '/design-build',
+            summary: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti rem dolorem modi molestias optio a aliquid voluptates provident minus unde porro esse, iure, tempore iste. Iste commodi nobis ab ducimus?'
+        },
+            {
+            text: '',
+            image: '/images/Charlotte-Night-Skyline.jpg',
+            route: ''
+        });
+    }
+
+    private removeSlide(index:number) {
+        this.slides.splice(index, 1);
+    }
+
 
 }
