@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { NavStateActions } from '../actionCreators/navState.actions';
 
 @Component({
     selector: 'building-automation',
@@ -36,4 +37,15 @@ import { Component } from '@angular/core';
         }
     `]
 })
-export class BuildingAutomationComponent {}
+export class BuildingAutomationComponent implements OnInit, OnDestroy {
+    constructor(private _navActions: NavStateActions) {}
+
+    ngOnInit() {
+        this._navActions.updateState({ 'topNav.activeSection': 'Building Automation'});  
+    }
+
+    ngOnDestroy() {
+        this._navActions.updateState({ 'topNav.activeSection': ''});  
+    }
+
+}

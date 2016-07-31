@@ -109,7 +109,8 @@ export class CarComponent implements OnInit {
             {
             text: '',
             image: '/images/Charlotte-Night-Skyline.jpg',
-            route: ''
+            route: '',
+            summary: ''
         });
     }
 

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { NavStateActions } from '../actionCreators/navState.actions';
 
 @Component({
     selector: 'facilities-management',
@@ -36,4 +37,14 @@ import { Component } from '@angular/core';
         }
     `]
 })
-export class FacilitiesManagementComponent {}
+export class FacilitiesManagementComponent implements OnInit, OnDestroy {
+    constructor(private _navActions: NavStateActions) {}
+
+    ngOnInit() {
+        this._navActions.updateState({ 'topNav.activeSection': 'Facilities Management'});
+    }
+
+    ngOnDestroy() {
+        this._navActions.updateState({ 'topNav.activeSection': ''});
+    }
+}

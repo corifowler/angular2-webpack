@@ -22,9 +22,9 @@ import { ROUTER_DIRECTIVES } from '@angular/router';
                     <li><a [routerLink]="['/blog']">Blog</a></li>
                     <li><a [routerLink]="['/events']">Events</a></li>
                 </ul>
-                <h3>RECENT PROJECTS</h3>
+                <h3><a [routerLink]="['/projects']">RECENT PROJECTS</a></h3>
                 <ul>
-                    <li>Project</li>
+                    <li></li>
                 </ul>
             </div>
             <div class="right-bottom">
@@ -66,6 +66,7 @@ import { ROUTER_DIRECTIVES } from '@angular/router';
 
         .bottom-menu h3 {
             color: #2D2D72;
+            font-size: 1.25em;
         }
 
         .bottom-menu ul {

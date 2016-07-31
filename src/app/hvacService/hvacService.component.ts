@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { NavStateActions } from '../actionCreators/navState.actions';
 
 @Component({
     selector: 'hvac-service',
@@ -36,4 +37,14 @@ import { Component } from '@angular/core';
         }
     `]
 })
-export class HvacServiceComponent {}
+export class HvacServiceComponent implements OnInit, OnDestroy {
+    constructor(private _navActions: NavStateActions) {}
+
+    ngOnInit() {
+        this._navActions.updateState({ 'topNav.activeSection': 'HVAC Service'});
+    }
+
+    ngOnDestroy() {
+        this._navActions.updateState({ 'topNav.activeSection': ''});
+    }
+}

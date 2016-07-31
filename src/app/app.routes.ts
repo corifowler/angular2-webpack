@@ -15,6 +15,7 @@ import { ContactComponent } from './contact/contact.component';
 import { CareersComponent } from './careers/careers.component';
 import { OfficeCareersComponent } from './officeCareers/officeCareers.component';
 
+
 export const routes: RouterConfig = [
   { path: '', component: HomeComponent },
   { path: 'hvac-service', component: HvacServiceComponent },
@@ -29,7 +30,7 @@ export const routes: RouterConfig = [
   { path: 'events', component: EventsComponent },
   { path: 'projects', component: ProjectsComponent },
   { path: 'contact-us', component: ContactComponent },
-  { path: 'careers', component: CareersComponent }
+  { path: 'careers', component: CareersComponent },
 ];
 
 export const APP_ROUTER_PROVIDERS = [
