@@ -14,6 +14,7 @@ import { ProjectsComponent } from './projects/projects.component';
 import { ContactComponent } from './contact/contact.component';
 import { CareersComponent } from './careers/careers.component';
 import { OfficeCareersComponent } from './officeCareers/officeCareers.component';
+import { ProjectComponent } from './projects/project.component';
 
 
 export const routes: RouterConfig = [
@@ -31,6 +32,7 @@ export const routes: RouterConfig = [
   { path: 'projects', component: ProjectsComponent },
   { path: 'contact-us', component: ContactComponent },
   { path: 'careers', component: CareersComponent },
+  { path: 'project/:id', component: ProjectComponent }
 ];
 
 export const APP_ROUTER_PROVIDERS = [

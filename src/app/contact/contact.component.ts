@@ -55,7 +55,7 @@ import { REACTIVE_FORM_DIRECTIVES, FormBuilder, Validators, FormGroup, FormContr
             justify-content: center;
         }
         .contact-content {
-            background-color: #fbfbfc;
+            background-color: #ECEFF1;
             display: flex;
             flex-direction: column;
             padding: 1.25em;

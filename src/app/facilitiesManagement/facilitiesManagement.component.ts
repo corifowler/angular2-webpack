@@ -18,7 +18,7 @@ import { NavStateActions } from '../actionCreators/navState.actions';
             justify-content: center;
         }
         .facilities-content {
-            background-color: #fbfbfc;
+            background-color: #ECEFF1;
             display: flex;
             flex-direction: column;
             padding: 1.25em;

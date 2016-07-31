@@ -19,7 +19,7 @@ import { ROUTER_DIRECTIVES } from '@angular/router';
             justify-content: center;
         }
         .careers-content {
-            background-color: #fbfbfc;
+            background-color: #ECEFF1;
             display: flex;
             flex-direction: column;
             padding: 1.25em;

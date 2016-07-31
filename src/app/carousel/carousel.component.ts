@@ -91,7 +91,7 @@ export class CarComponent implements OnInit {
     private slides:Array<any> = [];
 
     constructor() {
-        for (let i = 0; i < 4; i++) {
+        for (let i = 0; i < 2; i++) {
         this.addSlide();
         }
     }
