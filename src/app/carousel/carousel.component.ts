@@ -46,7 +46,7 @@ import { CORE_DIRECTIVES } from '@angular/common';
             text-align: center;
         }
         img {
-            max-width: 100%;
+            max-width: 98%;
             opacity: 0.9;
             max-height: 85%;
         }
@@ -93,8 +93,7 @@ export class CarComponent implements OnInit {
     private noWrapSlides:boolean = false;
     private slides:Array<any> = [];
 
-    constructor() {
-    }
+    constructor() {}
     
     public ngOnInit() {
         for (let i = 0; i < 4; i++) {

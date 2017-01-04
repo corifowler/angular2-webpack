@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { NavStateActions } from '../actionCreators/navState.actions';
 
 @Component({
     selector: 'design-build',
@@ -17,7 +18,7 @@ import { Component } from '@angular/core';
             justify-content: center;
         }
         .design-content {
-            background-color: #fbfbfc;
+            background-color: #ECEFF1;
             display: flex;
             flex-direction: column;
             padding: 1.25em;
@@ -36,4 +37,14 @@ import { Component } from '@angular/core';
         }
     `]
 })
-export class DesignBuildComponent {}
+export class DesignBuildComponent implements OnInit, OnDestroy {
+    constructor(private _navActions: NavStateActions) {}
+
+    ngOnInit() {
+        this._navActions.updateState({ 'topNav.activeSection': 'Design Build'});    
+    }
+
+    ngOnDestroy() {
+        this._navActions.updateState({ 'topNav.activeSection': ''});
+    }
+}

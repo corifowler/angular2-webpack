@@ -55,7 +55,7 @@ import { REACTIVE_FORM_DIRECTIVES, FormBuilder, Validators, FormGroup, FormContr
             justify-content: center;
         }
         .contact-content {
-            background-color: #fbfbfc;
+            background-color: #ECEFF1;
             display: flex;
             flex-direction: column;
             padding: 1.25em;
@@ -65,7 +65,7 @@ import { REACTIVE_FORM_DIRECTIVES, FormBuilder, Validators, FormGroup, FormContr
             color: #0b8d45;
             align-self: center;
             margin-bottom: 0;
-            font-size: 1.5em;
+            font-size: 1.875em;
         }
         .form-element {
             font-family: 'Roboto', sans-serif;
