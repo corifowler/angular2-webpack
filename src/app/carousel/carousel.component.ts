@@ -1,6 +1,6 @@
 import { Component, OnInit, OnChanges } from '@angular/core';
 import { ROUTER_DIRECTIVES } from '@angular/router';
-import { CAROUSEL_DIRECTIVES, SlideComponent, CarouselComponent } from 'ng2-bootstrap/ng2-bootstrap';
+import { SlideComponent, CarouselComponent } from 'ng2-bootstrap/ng2-bootstrap';
 import { CORE_DIRECTIVES } from '@angular/common';
 
 @Component({
@@ -8,10 +8,13 @@ import { CORE_DIRECTIVES } from '@angular/common';
     template: `
         <div class="row">
             <div class="col-md-6">
-                <carousel [interval]="myInterval" [noWrap]="noWrapSlides">
+                <carousel
+                    class="text-lg-center" 
+                    [interval]="myInterval" 
+                    [noWrap]="noWrapSlides">
                     <slide *ngFor="let slidez of slides; let index=index"
                      [active]="slidez.active">
-                        <img [src]="slidez.image" style="margin:auto;">
+                        <img  class="center-block" [src]="slidez.image" style="margin:auto;">
 
                         <div class="text-box">
                             <span>{{slidez.text}}</span>
@@ -43,7 +46,7 @@ import { CORE_DIRECTIVES } from '@angular/common';
             text-align: center;
         }
         img {
-            max-width: 98%;
+            max-width: 100%;
             opacity: 0.9;
             max-height: 85%;
         }
@@ -83,7 +86,7 @@ import { CORE_DIRECTIVES } from '@angular/common';
             margin: 1em;
         }
     `],
-    directives: [ROUTER_DIRECTIVES, CAROUSEL_DIRECTIVES, CORE_DIRECTIVES, SlideComponent, CarouselComponent]
+    directives: [ROUTER_DIRECTIVES, CORE_DIRECTIVES, SlideComponent, CarouselComponent]
 })
 export class CarComponent implements OnInit {
     private myInterval:number = 5000;
@@ -91,12 +94,13 @@ export class CarComponent implements OnInit {
     private slides:Array<any> = [];
 
     constructor() {
-        for (let i = 0; i < 4; i++) {
-        this.addSlide();
-        }
     }
     
-    public ngOnInit() {}
+    public ngOnInit() {
+        for (let i = 0; i < 4; i++) {
+            this.addSlide();
+        }
+    }
 
     private addSlide() {
         let newWidth = 600 + this.slides.length + 1;
@@ -107,9 +111,10 @@ export class CarComponent implements OnInit {
             summary: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti rem dolorem modi molestias optio a aliquid voluptates provident minus unde porro esse, iure, tempore iste. Iste commodi nobis ab ducimus?'
         },
             {
-            text: '',
+            text: 'Our Business',
             image: '/images/Charlotte-Night-Skyline.jpg',
-            route: ''
+            route: '',
+            summary: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt eius quidem animi aperiam similique alias aliquid tempora, consectetur dolorum quia maiores id cumque tempore nulla quisquam est necessitatibus numquam. Quasi.'
         });
     }
 

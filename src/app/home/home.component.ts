@@ -14,6 +14,7 @@ import { CarComponent } from '../carousel/carousel.component';
             background-color: #2D2D72;
             display: flex;
             position: relative;
+            align-items: center;
         }
     `],
     directives: [CarComponent]

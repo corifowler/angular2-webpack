@@ -85,10 +85,10 @@ import { REACTIVE_FORM_DIRECTIVES, FormBuilder, Validators, FormGroup, FormContr
             text-align: center;
             padding: 0.5em;
             border: 1px solid #2d2d72;
-            width: 13em;
+            width: 15em;
             font-size: 1em;
             background-color: white; 
-            margin: 2em 5em;
+            margin: 2em 9em;
             color: #2d2d72;
         }
         input, textarea {
